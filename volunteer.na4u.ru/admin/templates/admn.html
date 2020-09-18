@@ -1,0 +1,23 @@
+{%extends "basicadm.html"%}
+{%block title%}Волонтеры НИУ ВШЭ - Администратор{%endblock%}
+{%block body%}
+<div class="container p-3 border rounded-lg">
+    <h2 class="m-2">Панель администратора</h2>
+    <br />
+    <a href="{{url_for('administrator.allusers')}}" style="margin:15px"><figure style="display:inline-block"><img src="{{url_for('static', filename='image/for_admin/volunteers.png')}}" /><figcaption>Управление пользователями</figcaption></figure></a>
+    <a href="{{url_for('administrator.tempusers')}}" style="margin:15px"><figure style="display:inline-block"><img src="{{url_for('static', filename='image/for_admin/anonimus.png')}}" /><figcaption>Незарегистрированные</figcaption></figure></a>
+    <a href="{{url_for('administrator.reserve')}}" style="margin:15px"><figure style="display:inline-block"><img src="{{url_for('static', filename='image/for_admin/reserve.png')}}" /><figcaption>Резерв</figcaption></figure></a>
+    <a href="{{url_for('administrator.event')}}" style="margin:15px"><figure style="display:inline-block"><img src="{{url_for('static', filename='image/for_admin/event.png')}}" /><figcaption>Управление событиями</figcaption></figure></a>
+    <span style="margin:15px">
+        <input type="checkbox" id="hd-1" class="hide" />
+        <label for="hd-1"><img src="{{url_for('static', filename='image/for_admin/report.png')}}" /><div>Полный отчет по регистрациям ...</div></label>
+        <div><a href="{{url_for('administrator.getdata')}}">Выгрузить список зарегистрированных на все события</a></div>
+        <div><form action="{{url_for('administrator.getdata')}}" method="post">Выгрузить события за период с <input name="since" type="date" /> по <input name="to" type="date" /> <input type="submit" value="Пуск" /></form></div>
+    </span>
+    <a href="{{url_for('administrator.faculty')}}" style="margin:15px"><figure style="display:inline-block"><img src="{{url_for('static', filename='image/for_admin/faculty.png')}}" /><figcaption>Факультеты</figcaption></figure></a>
+    <a href="{{url_for('administrator.post')}}" style="margin:15px"><figure style="display:inline-block"><img src="{{url_for('static', filename='image/for_admin/news.png')}}" /><figcaption>Опубликовать новость</figcaption></figure></a>
+    <a href="{{url_for('administrator.pages')}}" style="margin:15px"><figure style="display:inline-block"><img src="{{url_for('static', filename='image/for_admin/edit.png')}}" width="128px" /><figcaption>Редактировать тексты</figcaption></figure></a>
+    <a href="{{url_for('administrator.backupdb')}}" style="margin:15px"><figure style="display:inline-block"><img src="{{url_for('static', filename='image/for_admin/db.png')}}" /><figcaption>Бэкап Базы Данных</figcaption></figure></a>
+</div>
+<footer></footer>
+        {%endblock%}

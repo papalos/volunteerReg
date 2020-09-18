@@ -1,0 +1,48 @@
+{%extends "basicadm.html"%}
+{%block title%}Волонтеры НИУ ВШЭ - Пользователь{%endblock%}
+{%block body%}
+
+<div class="container w-50 p-3 border rounded-lg">
+    <h3 class="mb-4">Редактирование сведений о пользователе</h3>
+    <form action="{{url_for('administrator.setedit')}}" method="post">
+        <input type="hidden" name="id" value="{{result[0]}}" />
+        <p class="row"><label class="col-4">Фамилия: </label><input class="col-7" type="text" name="surname" required value="{{result[1]}}" /></p>
+        <p class="row"><label class="col-4">Имя: </label><input class="col-7" type="text" name="name" required value="{{result[2]}}" /></p>
+        <p class="row"><label class="col-4">Отчество: </label><input class="col-7" type="text" name="patronymic" value="{{result[3]}}" /></p>
+        <p class="row"><label class="col-4">Дата рождения: </label><input class="col-7" type="date" name="birthday" required value="{{result[7]}}" /></p>
+        <p class="row">
+            <label class="col-4">Пол: </label>
+            <select class="col-7" name="sex">
+                {% if result[11] == 'м' %}
+                <option value="м" selected>Мужской</option>
+                <option value="ж">Женский</option>
+                {% else %}
+                <option value="м">Мужской</option>
+                <option value="ж" selected>Женский</option>
+                {% endif %}
+            </select>
+        </p>
+        <p class="row"><label class="col-4">Образовательная программа: </label><input class="col-7" type="text" name="faculty" value="{{result[4]}}" /></p>
+        <p class="row">
+            <label class="col-4">Курс: </label>
+            <select class="col-7" name="year_st">
+                <option selected>{{result[12]}}</option>
+                <option>Бакалавриат 1</option>
+                <option>Бакалавриат 2</option>
+                <option>Бакалавриат 3</option>
+                <option>Бакалавриат 4</option>
+                <option>Магистратура 1</option>
+                <option>Магистратура 2</option>
+            </select>
+        </p>
+        <p class="row"><label class="col-4">E-mail: </label><input id="vltremail" class="col-7" type="email" name="email" required value="{{result[5]}}" /></p>
+        <p class="row"><label class="col-4">Телефон: </label><input id="vltrtel" class="col-7" type="tel" name="phone" required value="{{result[6]}}" /></p>
+        <p class="row"><label class="col-4">Логин: </label><input id="vlrtlog" class="col-7" type="text" name="login" required value="{{result[8]}}" /></p>
+        <p class="row"><label class="col-4">Пароль: </label><input id="vltrpass" class="col-7" type="text" name="password" required value="{{result[9]}}" /></p>
+
+
+        <p class="text-right m-0"><input id="butt" class="mr-4" type="submit" value="Редактировать" /></p>
+    </form>
+</div>
+<br /><br />
+{%endblock%}

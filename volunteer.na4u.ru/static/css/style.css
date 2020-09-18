@@ -1,0 +1,86 @@
+@font-face {
+    font-family: Myriad Pro;
+    src: url(/static/font/MyriadPro.ttf);
+}
+
+.top{
+    background:#aba9a9;
+    color:#000000;
+    width:80%;
+}
+
+.enter{
+    background: #f8f30d;
+    color: #00ff21;
+    width:20%;
+    float:right;
+}
+
+.name {
+    font-size:16pt;
+}
+
+.exter{
+    position:relative;
+    margin-bottom: 10px;
+}
+
+.logo {
+    //font-family: Beckett;
+    font-size: 220%;	
+	color: #ee7501;
+}
+
+
+/* --------------------- СЃРІРѕСЂР°С‡РёРІР°СЋС‰РёРµСЃСЏ div --------------------------*/
+
+.hide {
+    display: none;
+}
+
+    .hide + label {
+        color: blue;
+        margin: 0;
+    }
+
+        .hide + label ~ div {
+            display: none;
+            margin-left: 20px;
+        }
+
+    .hide:checked + label ~ div {
+        display: block;
+    }
+
+/* --------------------- С„РѕСЂРјР° СЂРµРіРёСЃС‚СЂР°С†РёРё РЅР° РіР»Р°РІРЅРѕР№ --------------------------*/
+.regform {
+    float: right;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    background: #0570f73b;
+    margin-top: 50px;
+    box-shadow: 10px 10px 20px -10px rgba(0,0,0,0.5)
+}
+
+
+/* --------------------- РёР·РѕР±СЂР°Р¶РµРЅРёРµ РЅР° СЃС‚СЂР°РЅРёС†Рµ РѕС‚РєР°Р·Р° РѕС‚ СЂРµРіРёСЃС‚СЂР°С†РёРё --------------------------*/
+.box {
+    overflow: hidden;
+    width: 170px;
+    height: 170px;
+    border-radius: 70px;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.4);
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:20px;
+    margin-top:20px
+}
+
+    .box img {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        
+    }

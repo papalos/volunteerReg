@@ -1,0 +1,31 @@
+{%extends "basicadm.html"%}
+{%block title%}Волонтеры НИУ ВШЭ - Новости{%endblock%}
+{%block body%}
+
+<div class="container p-3 border rounded-lg">
+
+    <h2 class="m-2">Опубликовать новость</h2>
+    <form action="{{url_for('administrator.addpost')}}" method="post">
+        <p class="row">
+            <label class="col-2">Тип: </label>
+            <span class="col-3"><label>Общий</label> <input type="radio" name="type" value="common" checked="checked" /></span>
+            <span class="col-3"><label>Школьная</label> <input type="radio" name="type" value="school" /></span>
+            <span class="col-3"><label>Студенческая</label> <input type="radio" name="type" value="student" /></span>
+        </p>
+        <p class="row"><label class="col-2">Заголовок: </label><input class="col-9" type="text" name="titlepost" /></p>
+        <p class="row"><label class="col-2">Новость: </label><textarea class="col-9" name="bodypost"></textarea></p>
+        <p class="text-right"><input type="submit" value="Опубликовать" /></p>
+    </form>
+
+</div>
+<div class="container p-3 border rounded-lg">
+    <table class="table table-hover">
+        <tr class="thead-dark"><th>id</th><th>Тип</th><th>Заголовок</th><th>Дата публикации</th><th></th><th></th></tr>
+        {% for new in news %}
+        <tr><td>{{new[0]}}</td><td>{{new[4]}}</td><td>{{new[2]}}</td><td>{{new[1]}}</td><td><a href="{{url_for('administrator.postrecovery', id_new=new[0])}}">редактировать</a></td><td><a href="{{url_for('administrator.delpost', id_new=new[0])}}" onclick="return conf_del()">удалить</a></td></tr>
+        {% endfor %}
+    </table>
+
+</div>
+<footer></footer>
+    {%endblock%}

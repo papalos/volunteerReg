@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <title>Справка о волонтерской деятельности</title>
+  <script src='/static/js/pdfmake/pdfmake.min.js'></script>
+  <script src='/static/js/pdfmake/vfs_fonts.js'></script>
+</head>
+<body>
+<script>
+var docDefinition = {
+	pageSize: 'A5',
+	pageOrientation: 'landscape',
+	content: [
+		{
+			text: 'Справка о волонтерской деятельности',
+			alignment: 'center',
+			fontSize: 16,
+			bold: true,
+			margin: [ 0, 20, 0, 35 ]
+		},
+		{
+			text: 'Данная справка подтверждает, что {{fio}} действительно принимал(а) участие в мероприятии {{activity_name}}, проводимом Дирекцией по профессиональной ориентации и работе с одаренными учащимися {{evt_date}} в качестве волонтера.',
+			fontSize: 14,
+			lineHeight: 1.2
+		},
+		{
+			text: 'Код подтверждения: {{code}}',
+			alignment: 'center',
+			fontSize: 10,
+			bold: true,
+			margin: [ 0, 20, 0, 0 ]
+		}
+	],
+	
+	footer: [
+		{ 
+			text:'Верификацию данной справки можно выполнить на странице:',
+			alignment: 'center'
+		},
+		{ 
+			text:'https://volunteer.na4u.ru/vern',
+			alignment: 'center'
+		}
+	]
+};
+pdfMake.createPdf(docDefinition).download('ref.pdf');
+
+
+</script>
+</body>
+</html>

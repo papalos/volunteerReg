@@ -1,0 +1,40 @@
+{%extends "basicadm.html"%}
+{%block title%}Волонтеры НИУ ВШЭ - События{%endblock%}
+{%block body%}
+<div class="m-3 p-3 border rounded-lg">
+    <div><form action="{{url_for('administrator.getsomeevents')}}" method="post">Выгрузить события за период с <input name="since" type="date" /> по <input name="to" type="date" /> <input type="submit" value="Пуск" /></form></div><br />
+    <div><form action="{{url_for('administrator.scopereg')}}" method="post">Динамика регистрации на события за период с <input name="since" type="date" /> по <input name="to" type="date" /> <input type="submit" value="Смотреть" /></form></div><br />
+
+    <h2 class="m-2">Все события:</h2>
+    <strong><a class="m-2" href="{{url_for('administrator.event_add_html')}}" style="border:2px solid blue; padding:5px">Создать событие</a></strong>
+    <p></p>
+    <table class="table table-striped m-auto">
+        <thead>
+        <th>id</th>
+        <th><a href="/admin/event?srt=event">Событие</a></th>
+        <th><a href="/admin/event?srt=activity">Активность/Предмет</a></th>
+        <th><a href="/admin/event">Дата</a></th>
+        <th>Редактировать<span class="text-danger">(warning)</span></th>
+        <th colspan="2" align="center">Статистика</th>
+        </thead>
+        {%for evt in events%}
+        <tr>
+            <td>{{evt[0]}}</td>
+            <td>{{evt[1]}}</td>
+            <td>{{evt[2]}}</td>
+            <td>{{evt[3]}}</td>
+            <td>
+                <a class="text-danger" href="{{url_for('administrator.deletevt', id=evt[0])}}" onclick="return conf_del()">
+                    удалить<a>
+                        / <a class="text-danger" href="{{url_for('administrator.changevt', id=evt[0])}}" onclick="return conf_change()">редактировать<a>
+            </td>
+            <td><a href="{{url_for('administrator.stat', id_evt=evt[0])}}">регистрации<a></td>
+            <td><a href="{{url_for('administrator.visit', id_evt=evt[0])}}">посещения<a></td>
+        </tr>
+        {%endfor%}
+    </table>
+</div>
+</div>
+
+</div>
+{%endblock%}

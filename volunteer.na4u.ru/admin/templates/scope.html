@@ -1,0 +1,32 @@
+{%extends "basicadm.html"%}
+{%block title%}Волонтеры НИУ ВШЭ - События{%endblock%}
+{%block body%}
+<div class="m-3 p-3 border rounded-lg">
+    <h2 class="m-2">Динамика регистраций на выбранные события:</h2>
+    <table class="table table-striped m-auto">
+        <thead>
+        <th>Дата</th>
+        <th>Событие</th>
+        <th>Активность/Предмет</th>
+        <th>Роль</th>
+        <th>Количество регистраций</th>
+        <th>Штаб</th>
+        <th>Аудитория</th>
+        </thead>
+        {%for evt in someevents%}
+        <tr>
+            <td>{{evt[3]}}</td>
+            <td>{{evt[1]}}</td>
+            <td>{{evt[2]}}</td>
+            <td>{{evt[13]}}</td>
+            <td>{{evt[14]}}</td>
+            <td>{{evt[7]}}/{{evt[8]}}</td>
+            <td>{{evt[9]}}/{{evt[10]}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+</div>
+</div>
+
+</div>
+{%endblock%}

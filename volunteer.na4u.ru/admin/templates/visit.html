@@ -1,0 +1,41 @@
+{%extends "basicadm.html"%}
+{%block title%}Волонтеры НИУ ВШЭ - Статистика посещений{%endblock%}
+{%block body%}
+<div class="m-3 p-3 border rounded-lg">
+
+    <h2 class="m-2">Статистика посещения {{event[1]}} - {{event[2]}}</h2>
+
+    <span class="text-danger">Количество присутствующих на событии: {{count}}</span>
+    <a href="{{url_for('administrator.getvisit', id_evt=id_evt)}}">Выгрузить список посетивших событие</a>
+    <table class="table table-striped m-auto">
+        <thead>
+        <th>id</th>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+        <th>Факультет</th>
+        <th>e-mail</th>
+        <th>Телефон</th>
+        <th>Дата рождения</th>
+        <th>Пол</th>
+        <th>Курс</th>
+        <th>Аудитория</th>
+        </thead>
+        {%for r in visited%}
+        <tr>
+            <td>{{r[0]}}</td>
+            <td>{{r[1]}}</td>
+            <td>{{r[2]}}</td>
+            <td>{{r[3]}}</td>
+            <td>{{r[4]}}</td>
+            <td>{{r[5]}}</td>
+            <td>{{r[6]}}</td>
+            <td>{{r[7]}}</td>
+            <td>{{r[8]}}</td>
+            <td>{{r[9]}}</td>
+            <td>{{r[10]}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+</div>
+{%endblock%}

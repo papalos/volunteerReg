@@ -1,0 +1,31 @@
+{%extends "basicadm.html"%}
+{%block title%}Волонтеры НИУ ВШЭ - Резерв{%endblock%}
+{%block body%}
+<div class="m-3 p-3 border rounded-lg">
+
+    <h2 class="m-2">Резерв:</h2>
+    <table class="table table-striped m-auto">
+        <thead>
+        <th>Дата</th>
+        <th>Событие</th>
+        <th>Активность/Предмет</th>
+        <th>id пользователя</th>
+        <th>e-mail</th>
+        <th></th>
+        </thead>
+        {%for r in res%}
+        <tr>
+            <td>{{r[0]}}</td>
+            <td>{{r[1]}}</td>
+            <td>{{r[2]}}</td>
+            <td>{{r[3]}}</td>
+            <td>{{r[4]}}</td>
+            <td><a href="{{url_for('administrator.reservedel', evt=r[5], prs=r[3])}}">Удалить</a></td>
+        </tr>
+        {%endfor%}
+    </table>
+</div>
+</div>
+
+</div>
+{%endblock%}

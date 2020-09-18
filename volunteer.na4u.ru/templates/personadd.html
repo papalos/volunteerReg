@@ -1,0 +1,61 @@
+{%extends "basic.html"%}
+{%block title%}Волонтеры НИУ ВШЭ - Регистрация{%endblock%}
+{%block body%}
+
+<div class="container w-50 p-3 border rounded-lg">
+    <h3 class="mb-4">Регистрация нового волонтера</h3>
+    <form action="/personview" method="post">
+        <p class="row"><label class="col-4">Фамилия: </label><input class="col-7" type="text" name="surname" placeholder="Иванов" required /></p>
+        <p class="row"><label class="col-4">Имя: </label><input class="col-7" type="text" name="name" placeholder="Иван" required /></p>
+        <p class="row"><label class="col-4">Отчество: </label><input class="col-7" type="text" name="patronymic" placeholder="Иванович" /></p>
+        <p class="row"><label class="col-4">Дата рождения: </label><input class="col-7" type="date" name="birthday" required /></p>
+        <!--Изменения Старт-->
+        <p class="row">
+            <label class="col-4">Пол: </label>
+            <select class="col-7" name="sex">
+                <option value="м">Мужской</option>
+                <option value="ж">Женский</option>
+            </select>
+        </p>
+        <!--Изменения Конец-->
+        <p class="row">
+            <label class="col-4">Образовательная программа: </label>
+            <select class="col-7" name="faculty">
+                {% for i in facultes %}
+                <option>{{i[2]}}</option>
+                {% endfor%}
+            </select>
+        </p>
+        <!--Изменения Старт-->
+        <p class="row">
+            <label class="col-4">Курс: </label>
+            <select class="col-7" name="year_st">
+                <option>Бакалавриат 1</option>
+                <option>Бакалавриат 2</option>
+                <option>Бакалавриат 3</option>
+                <option>Бакалавриат 4</option>
+                <option>Магистратура 1</option>
+                <option>Магистратура 2</option>
+            </select>
+        </p>
+        <!--Изменения Конец-->
+        <p id="erremail" style="display:none" class="row"><span class="col-1 text-danger">Неверный формат электронной почты</span></p>
+        <p id="err2email" style="display:none" class="row"><span class="col-1 text-danger">Такой адрес почты уже существует в базе данных</span></p>
+        <p class="row"><label class="col-4">E-mail: </label><input id="vltremail" class="col-7" type="email" name="email" placeholder="myaddress@yandex.ru" required /></p>
+        <p id="errtel" style="display:none" class="row"><span class="col-1 text-danger">Неверный формат телефонного номера</span></p>
+        <p class="row"><label class="col-4">Телефон: </label><input id="vltrtel" class="col-7" type="tel" name="phone" placeholder="+7(903)555 55 55" required /></p>
+        <p class="row"><label class="col-4">Логин: </label><input id="vlrtlog" class="col-7" type="text" name="login" placeholder="mylogin" pattern="[A-Za-zА-Яа-яЁё0-9]{1,20}" required /></p>
+        <p id="errpass" style="display:none"><span class="col-11 text-danger">Пароль не должен совпадать с логином</span></p>
+        <!--Изменения Старт-->
+        <p class="row"><label class="col-4">Пароль: </label><input id="vltrpass" class="col-7" type="password" name="password" placeholder="passWord45" pattern="(?=^.{8,20}$)(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?!.*\s).*$" required /></p>
+        <p class="row"><span class="col-11 small">Пароль должен быть не менее 8 символов и содержать не менее одной цифры, строчной и прописной буквы латинского алфавита.</span></p>
+        <p class="row"><span class="col-11"><input id="check" type="checkbox" name="check"> <label>Подтверждаю достоверность предоставленной информации</label></span></p>
+        <p class="row"><span class="col-10"><input id="check" type="checkbox" name="agree" required> Даю свое согласие на сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование предоставленных персональных данных.</span></p>
+
+        <!--Изменения Конец-->
+        <p class="text-right m-0"><input id="butt" class="mr-4" type="submit" value="Зарегистрироваться" /></p>
+    </form>
+</div>
+<br /><br />
+<script src="/static/js/script.js"></script>
+{%endblock%}

@@ -1,0 +1,18 @@
+{%extends "basic.html"%}
+{%block title%}Проверка справки{%endblock%}
+{%block body%}
+
+<div class="container w-50 p-3 border rounded-lg">
+    <h3 class="mb-4">Введите код со справки волонтера</h3>
+    <p>формат ввода такой же как на справке</p>
+    <form action="/vern" method="get">
+        <p class="row"><label class="col-4">Код: </label><input class="col-7" type="text" name="code" placeholder="{{code}}" required/></p>
+        <p class="text-right m-0"><input id="butt" class="mr-4" type="submit" value="Проверить" /></p>
+    </form>
+    <div class="mb-12 mt-5">
+        <p>{{message}}</p>
+    </div>
+</div>
+
+<br /><br />
+{%endblock%}

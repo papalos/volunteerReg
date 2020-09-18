@@ -1,0 +1,36 @@
+{%extends "basicadm.html"%}
+{%block title%}Волонтеры НИУ ВШЭ - Новости{%endblock%}
+{%block body%}
+
+<div class="container p-3 border rounded-lg">
+
+    <h2 class="m-2">Редактировать новость</h2>
+    <form action="{{url_for('administrator.postrecoveryfoo')}}" method="post">
+        <input type="hidden" name="id_new" value="{{new[0]}}" />
+        <p class="row">
+            <label class="col-2">Тип: </label>
+            {% if new[4]=='student' %}
+            <span class="col-3"><label>Общий</label> <input type="radio" name="type" value="common" /></span>
+            <span class="col-3"><label>Школьная</label> <input type="radio" name="type" value="school" /></span>
+            <span class="col-3"><label>Студенческая</label> <input type="radio" name="type" value="student" checked="checked" /></span>
+            {% elif new[4]=='school' %}
+            <span class="col-3"><label>Обший</label> <input type="radio" name="type" value="common" /></span>
+            <span class="col-3"><label>Школьная</label> <input type="radio" name="type" value="school" checked="checked" /></span>
+            <span class="col-3"><label>Студенческая</label> <input type="radio" name="type" value="student" /></span>
+            {% else %}
+            <span class="col-3"><label>Обший</label> <input type="radio" name="type" value="common" checked="checked" /></span>
+            <span class="col-3"><label>Школьная</label> <input type="radio" name="type" value="school" /></span>
+            <span class="col-3"><label>Студенческая</label> <input type="radio" name="type" value="student" /></span>
+            {% endif %}
+
+        </p>
+        <p class="row"><label class="col-2">Дата публикации: </label><input class="col-9" type="text" name="date" value="{{new[1]}}" /></p>
+        <p class="row"><label class="col-2">Заголовок: </label><input class="col-9" type="text" name="titlepost" value="{{new[2]}}" /></p>
+        <p class="row"><label class="col-2">Новость: </label><textarea class="col-9" name="bodypost">{{new[3]}}</textarea></p>
+        <p class="text-right"><input type="submit" value="Редактировать" /> <input type="submit" onclick="document.location.href = '{{url_for('administrator.post')}}'" value="Отменить" /></p>
+    </form>
+
+</div>
+
+<footer></footer>
+{%endblock%}

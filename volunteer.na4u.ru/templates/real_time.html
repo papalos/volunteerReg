@@ -1,0 +1,32 @@
+{%extends "basic.html"%}
+{%block title%}Волонтеры НИУ ВШЭ - Мероприятия{%endblock%}
+{%block meta%}<meta http-equiv="Refresh" content="300" />{%endblock%}
+{%block body%}
+
+
+<div class="container">
+    <h2 class="m-2">Количество свободных мест на мероприятии</h2>
+    <div class="news">
+        {% for evt in events %}
+
+        <div class="media border rounded-right m-2 p-2">
+            
+            <div>
+                <img src="/static/image/on_pages/action.png" width="64px"/>
+            </div>
+
+            <div class="media-body ml-3">
+                <div class="datenews small">{{evt[0]}}</div>
+                <h3 class="titlenews">{{evt[1]}}</h3>
+                <div class="datenews small">{{evt[2]}}</div>
+                <div class="bodynews">Осталось мест для регистрации
+                    <span style="color:red; font-weight:bold;">
+                        {% if evt[3] < 0 %} 0 {% else %} {{evt[3]}} {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{%endblock%}

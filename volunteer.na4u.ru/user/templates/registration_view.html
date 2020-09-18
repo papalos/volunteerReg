@@ -1,0 +1,34 @@
+{%extends "basicus.html"%}
+{%block title%}Волонтеры НИУ ВШЭ - Регистрация на мероприятие{%endblock%}
+{%block body%}
+<div class="container w-50 p-3 border rounded-lg">
+    <h3 class="mb-4">Регистрация на мероприятие</h3>
+    <div class="name bg-dark text-light p-2">{{volonteer[2]}}, вы регистрируетесь на следующее мероприятие:</div>
+    <form action="/us/registration" method="post">
+        <input type="hidden" name="id_evt" value="{{event[0]}}" />
+        <p class="row"><label class="col-4">Событие: </label><span class="col-7">{{event[1]}}</span></p>
+        <p class="row"><label class="col-4">Активность: </label><span class="col-7">{{event[2]}}</span></p>
+        <p class="row"><label class="col-4">Дата проведения: </label><span class="col-7">{{event[3]}}</span></p>
+        <p class="row"><label class="col-4">Время прихода: </label><span class="col-7">{{event[4]}}</span></p>
+        <p class="row"><label class="col-4">Время начала состязания: </label><span class="col-7">{{event[5]}}</span></p>
+        <p class="row"><label class="col-4">Продолжительность (мин.): </label><span class="col-7">{{event[6]}}</span></p>
+        <p class="row"><label class="col-4">Адрес проведения: </label><span class="col-7">{{event[11]}}</span></p>
+        <p class="row"><label class="col-4">В штаб: </label><span class="col-7">Зарегистрировано: {{num_staff}} из {{event[8]}}</span></p>
+        <p class="row"><label class="col-4">В аудиторию: </label><span class="col-7">Зарегистрировано: {{num_classroom}} из {{event[10]}}</span></p>
+        <p class="row"><label class="col-4">Выберите роль: </label>
+        <select class="col-7" name="role">
+            {%if num_staff<event[8]%}<option>штаб</option>{%endif%}
+            {%if num_classroom<event[10]%}<option>аудитория</option>{%endif%}
+        </select>
+        </p>
+        <p class="text-right m-0">
+            {%if num_staff<event[8] or num_classroom<event[10] %}
+            <input class="mr-4" type="submit" value="Зарегистрироваться" />
+            {%else%}
+            <p class="text-danger">Регистрация на мероприятие закрыта</p>
+            {%endif%}
+            <input class="mr-4" type="button" value="Отменить" onclick="location.href='{{url_for('user.cabinet', action='1')}}'" />
+        </p>
+    </form>
+</div>
+    {%endblock%}

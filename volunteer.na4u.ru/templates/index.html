@@ -1,0 +1,46 @@
+{%extends "basic.html"%}
+{%block title%}Волонтеры НИУ ВШЭ - Главная{%endblock%}
+{%block body%}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2 class="m-2">Новости личного кабинета</h2>
+            <div class="news">
+                {% for n in news %}
+                <div class="media border rounded-right m-2 p-2">
+                    <!---->
+                    <div>
+                        {% if (n[4]=='school') %}
+                        <img src="/static/image/for_new/sch.png" />
+                        {% elif (n[4] == 'student') %}
+                        <img src="/static/image/for_new/st.jpg" />
+                        {% else %}
+                        <img src="/static/image/for_new/com.png" />
+                        {% endif %}
+                    </div>
+                    <div class="media-body ml-3">
+                        <h3 class="titlenews">{{n[2]}}</h3>
+                        <div class="datenews small">{{n[1]}}</div>
+                        <div class="bodynews">{{n[3]}}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col">
+            <h2 class="m-2">Новости группы</h2>
+            <div width="100%">
+                <script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script><!-- VK Widget -->
+
+                <div height="700" id="vk_groups">&nbsp;</div>
+                <script type="text/javascript">
+                    VK.Widgets.Group("vk_groups", { mode: 4, width: "auto", height: "600" }, 51217336);
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {%endblock%}

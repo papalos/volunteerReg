@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{%block title%}{%endblock%}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src="/static/js/confirm.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9"><a href="/">Главная</a> | <a href="{{url_for('real_time')}}">Свободные места</a> | <a href="{{url_for('about')}}">О нас</a> | <a href="{{url_for('contact')}}">Контакты</a></div>
+            <div class="col-md-3 text-right"><a href="/unlogin">Выход</a></div>
+        </div>
+        <div class="exter">
+            <h1 class="logo">Волонтерство на олимпиадах и конкурсах Личный Кабинет</h1>
+            <img src="/static/image/v2019.png" width="50%"><img src="/static/image/v2019.png" width="50%">
+        </div>
+    </div>
+{%block body%}{%endblock%}
+<footer></footer>
+</body>
+
+</html>

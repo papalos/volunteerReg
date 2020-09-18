@@ -1,0 +1,36 @@
+{%extends "basicadm.html"%}
+{%block title%}Волонтеры НИУ ВШЭ - Пользователь{%endblock%}
+{%block body%}
+
+<div class="container w-50 p-3 border rounded-lg">
+    <h3 class="mb-4">Дорегистрация пользователя на событи</h3>
+    <form action="{{url_for('administrator.extraregsave')}}" method="post">
+        <input type="hidden" name="id_prsn" value="{{result[0]}}" />
+        <p class="row"><label class="col-4">Фамилия: </label><span class="col-7">{{result[1]}}</span></p>
+        <p class="row"><label class="col-4">Имя: </label><span class="col-7">{{result[2]}}</span></p>
+        <p class="row"><label class="col-4">Отчество: </label><span class="col-7">{{result[3]}}</span></p>
+        <p class="row"><label class="col-4">E-mail: </label><span class="col-7">{{result[5]}}</span></p>
+        <p class="row"><label class="col-4">Телефон: </label><span class="col-7">{{result[6]}}</span></p>
+        <p class="row">
+            <label class="col-4">id события: </label>
+            <select class="col-7" name="id_evt">
+                {% for i in evts %}
+                <option>{{i[0]}}</option>
+                {% endfor %}
+            </select>
+        </p>
+
+        <p class="row"><label class="col-4">Номер аудитории: </label><input class="col-7" type="text" name="classroom" value="" /></p>
+        <p class="row">
+            <label class="col-4">Роль: </label>
+            <select class="col-7" name="role">
+                <option selected>аудитория</option>
+                <option>штаб</option>
+            </select>
+        </p>
+
+        <p class="text-right m-0"><input id="butt" class="mr-4" type="submit" value="Зарегистрировать и отметить" /></p>
+    </form>
+</div>
+<br /><br />
+{%endblock%}

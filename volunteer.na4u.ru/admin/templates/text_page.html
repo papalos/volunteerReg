@@ -1,0 +1,35 @@
+{%extends "basicadm.html"%}
+{%block title%}Волонтеры НИУ ВШЭ - Новости{%endblock%}
+{%block body%}
+
+<div class="container p-3 border rounded-lg">
+
+    <h2 class="m-2">Текст рассылок и страниц</h2>
+    <p class="row m-2 text-danger" >
+        При редактировании шаблона не удалять ссылки, заключенные в фигурные скобки! <br>
+        Текст страниц, поддерживает html, текст рассылок не поддерживает.
+    </p>
+    {% for p in text %}
+    <form action="{{url_for('administrator.change_page')}}" method="post">
+
+
+        <p class="row">
+            <label class="col-5">Место расположения: </label>
+            <input class="col-6" type="text" name="place" value="{{p[1]}}" readonly/>
+        </p>
+        <p class="row">
+            <label class="col-2">Заголовок: </label>
+            <input class="col-9" type="text" name="theme" value="{{p[2]}}"/>
+        </p>
+        <p class="row">
+            <label class="col-2">Новость: </label>
+            <textarea class="col-9" name="body">{{p[3]}}</textarea>
+        </p>
+
+        <p class="text-right col-11"><input type="submit" value="Сохранить изменения" /></p>
+    </form>
+    {% endfor %}
+</div>
+
+<footer></footer>
+    {%endblock%}

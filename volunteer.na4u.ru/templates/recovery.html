@@ -1,0 +1,13 @@
+{%extends "basic.html"%}
+{%block title%}Волонтеры НИУ ВШЭ - Восстановление пароля{%endblock%}
+{%block body%}
+
+<div class="container w-50 p-3 border rounded-lg">
+    <h3 class="mb-4">Восстановление пароля</h3>
+    <form action="/recovery_send" method="post">
+        <p class="row"><label class="col-4">Введите адрес почты: </label><input class="col-7" type="email" name="email" placeholder="myaddress@yandex.ru" required /></p>
+        <p class="text-right m-0"><input class="mr-4" type="submit" value="Восстановить" /></p>
+    </form>
+    <div>{{message | safe}}</div>
+</div>
+    {%endblock%}

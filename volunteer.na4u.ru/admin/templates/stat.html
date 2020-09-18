@@ -1,0 +1,65 @@
+{%extends "basicadm.html"%}
+{%block title%}Волонтеры НИУ ВШЭ - Статистика регистраций{%endblock%}
+{%block body%}
+<div class="m-3 p-3 border rounded-lg">
+
+    <h2 class="m-2">Статистика регистраций на {{event[1]}} - {{event[2]}}</h2>
+
+    <div class="text-danger">Количество зарегистрировавшихся в Штаб: <strong>{{x_staff}}</strong>; необходимое количество: {{event[7]}}/{{event[8]}}</div>
+    <div class="text-danger">Количество зарегистрировавшихся в Аудитории: <strong>{{x_classroom}}</strong>; необходимое количество: {{event[9]}}/{{event[10]}}</div>
+    <a href="{{url_for('administrator.getuserregistronevent', id_evt=id_evt)}}">Выгрузить список зарегистрировавшихся</a>
+    <form action="{{url_for('administrator.check')}}" method="post">
+        <input type="hidden" name="event" value="{{event[0]}}">
+        <table class="table table-striped m-auto">
+            <thead>
+            <th>id</th>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Факультет</th>
+            <th>e-mail</th>
+            <th>Телефон</th>
+            <th>Дата рождения</th>
+            <th>Роль</th>
+            <th>Присутствие</th>
+            <th>Аудитория</th>
+            </thead>
+            {%for r in registration%}
+            {%if r[9] == 1 %}
+            <tr style="color:green">
+                <td>{{r[0]}}</td>
+                <td>{{r[1]}}</td>
+                <td>{{r[2]}}</td>
+                <td>{{r[3]}}</td>
+                <td>{{r[4]}}</td>
+                <td>{{r[5]}}</td>
+                <td>{{r[6]}}</td>
+                <td>{{r[7]}}</td>
+                <td>{{r[8]}}</td>
+                <td><input type="checkbox" name="{{r[0]}}" checked="checked" /></td>
+                <td><input type="text" size="10" name="classroom_for_{{r[0]}}" value="{{r[10]}}" /></td>
+                <input type="hidden" name="list" value="{{r[0]}}">
+            </tr>
+            {% else %}
+            <tr>
+                <td>{{r[0]}}</td>
+                <td>{{r[1]}}</td>
+                <td>{{r[2]}}</td>
+                <td>{{r[3]}}</td>
+                <td>{{r[4]}}</td>
+                <td>{{r[5]}}</td>
+                <td>{{r[6]}}</td>
+                <td>{{r[7]}}</td>
+                <td>{{r[8]}}</td>
+                <td><input type="checkbox" name="{{r[0]}}"/></td>
+                <td><input type="text" size="10" name="classroom_for_{{r[0]}}" /></td>
+                <input type="hidden" name="list" value="{{r[0]}}">
+            </tr>
+            {% endif %}
+            {%endfor%}
+        </table>
+        <div class="text-right"><input type="submit" value="Отметить" /></div>
+    </form>
+
+</div>
+{%endblock%}

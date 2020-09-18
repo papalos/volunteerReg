@@ -1,0 +1,18 @@
+{%extends "basicus.html"%}
+{%block title%}Волонтеры НИУ ВШЭ - Регистрация на мероприятие{%endblock%}
+{%block body%}
+<div class="container w-50 p-3 border rounded-lg text-center" >
+    <h3 class="mb-4">Отмена регистрации на мероприятие</h3>
+    <div class="text-center">
+        <div class="box">
+            <img src="/static/image/on_pages/cry.gif" />
+        </div>
+        <p class="text-justify">
+            Ты уверен, что хочешь отказаться от участия в этом мероприятии?
+            Помни, что оргкомитет рассчитывает на тебя, и каждый раз, когда ты отменяешь участие, расстраивается один организатор.
+        </p>
+        <button class="btn btn-primary" onclick="location.href='{{url_for('user.unregistration', id_evt=id_evt)}}'">Отменить регистрацию</button>
+        <button class="btn btn-primary" onclick="location.href='{{url_for('user.cabinet', action='1')}}'">Остаться волонтером</button>
+    </div>
+</div>
+    {%endblock%}

@@ -1,0 +1,19 @@
+{%extends "basicadm.html"%}
+{%block title%}Волонтеры НИУ ВШЭ - Факультеты{%endblock%}
+{%block body%}
+
+<div class="container p-3 border rounded-lg">
+
+    <h2 class="m-2">Редактировать факультет</h2>
+    <form action="{{url_for('administrator.facultyeditfoo')}}" method="post">
+        <input type="hidden" name="f_id" value="{{fac[0]}}" />
+        <p class="row"><label class="col-2">Полное наименование: </label><input class="col-9" type="text" name="full_name" value="{{fac[1]}}" required /></p>
+        <p class="row"><label class="col-2">Краткое наименование: </label><input class="col-9" type="text" name="short_name" value="{{fac[2]}}" required /></p>
+        <p class="row"><label class="col-2">Руководитель: </label><input class="col-9" type="text" name="leader_name" value="{{fac[3]}}" required /></p>
+        <p class="row"><label class="col-2">Телефон: </label><input class="col-9" type="tel" name="phone" value="{{fac[4]}}" pattern="^(\+)?[0-9]{1,3}(\()?[0-9]{3}(\))?[\d\-\s]{7,17}$" placeholder="+7(903)7775533" required /></p>
+        <p class="row"><label class="col-2">E-mail: </label><input class="col-9" type="email" name="email" value="{{fac[5]}}" pattern="^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$" placeholder="my@email.ru" required /></p>
+        <p class="text-right"><input type="submit" value="Редактировать" /> <input type="button" onclick="document.location.href = '{{url_for('administrator.faculty')}}'" value="Отменить" /></p>
+    </form>
+
+    <footer></footer>
+    {%endblock%}

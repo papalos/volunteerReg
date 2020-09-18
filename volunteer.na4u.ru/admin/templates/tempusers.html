@@ -1,0 +1,38 @@
+{%extends "basicadm.html"%}
+{%block title%}Волонтеры НИУ ВШЭ - Пользователи{%endblock%}
+{%block body%}
+<div class="m-3 p-3 border rounded-lg">
+    <h2 class="m-2">Пользователи не завершившие регистрацию</h2>
+
+    <table class="table table-striped m-auto">
+        <thead>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+        <th>Факультет</th>
+        <th>e-mail</th>
+        <th>Телефон</th>
+        <th>Дата рождения</th>
+        <th>Логин</th>
+        <th>Пароль</th>
+        <th>Дата регистрации</th>
+        <th></th>
+        </thead>
+        {%for pers in persons%}
+        <tr>
+            <td>{{pers[1]}}</td>
+            <td>{{pers[2]}}</td>
+            <td>{{pers[3]}}</td>
+            <td>{{pers[4]}}</td>
+            <td>{{pers[5]}}</td>
+            <td>{{pers[6]}}</td>
+            <td>{{pers[7]}}</td>
+            <td>{{pers[8]}}</td>
+            <td>{{pers[9]}}</td>
+            <td>{{pers[10]}}</td>
+            <td><a href="{{url_for('administrator.confirm_adm', hash=pers[0])}}" onclick="return conf_reg()">Зарегистрировать</a></td>
+        </tr>
+        {%endfor%}
+    </table>
+</div>
+{%endblock%}
